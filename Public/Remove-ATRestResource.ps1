@@ -48,8 +48,6 @@ function Remove-ATRestResource {
         if (($ID.Length -eq 0) -and ($URL.Contains("{parentId}"))) {
             Write-Warning -Message "The ID of the parent object is required."
             return
-        } elseif (-not ($URL.Contains("{parentId}")) -and ($ID.Length -gt 0)) {
-            $URL += "/{id}"
         } elseif ($null -ne $ChildID) {
             $URL += "/$($ChildID)"
         }
