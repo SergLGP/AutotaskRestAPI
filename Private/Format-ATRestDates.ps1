@@ -15,7 +15,7 @@ function Format-ATRestDates {
         [Parameter(ValueFromPipeline = $true, Mandatory = $true)]$InputObject
     )
 
-    $DateFormat = "yyyy-MM-ddTHH:mm:ss.fffZ"
+    $DateFormat = "yyyy-MM-ddTHH:mm:ss.fff"
 
     if ($InputObject.GetType() -eq [hashtable]) {
         $Dates = $InputObject.GetEnumerator() | Where-Object { $_.Value.GetType() -eq [System.DateTime] }
