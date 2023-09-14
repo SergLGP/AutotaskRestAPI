@@ -67,14 +67,8 @@ function New-ATRestResource {
         }
 
         try {
-            $Bytes = [System.Text.Encoding]::UTF8.GetByteCount("ä")
-
-            if ($Bytes -eq 4) {
-                $RawResponse = Invoke-RestMethod -Method $Method -Uri $URL -Headers $Script:ATHeader -Body $SendingBody -ErrorAction Stop
-            } else {
-                $BodyBytes = [System.Text.Encoding]::UTF8.GetBytes($SendingBody)
-                $RawResponse = Invoke-RestMethod -Method $Method -Uri $URL -Headers $Script:ATHeader -Body $BodyBytes -ErrorAction Stop
-            }
+            $BodyBytes = [System.Text.Encoding]::UTF8.GetBytes($SendingBody)
+            $RawResponse = Invoke-RestMethod -Method $Method -Uri $URL -Headers $Script:ATHeader -Body $BodyBytes -ErrorAction Stop
             
             $RawResponse.itemId
         } catch {
